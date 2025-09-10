@@ -1,0 +1,38 @@
+[
+    {
+        "bookId":"TheMusicHeCouldFeel",
+        "bookName":"The Music He Could Feel",
+        "bookCover":"/bookCovers/theMusicHeCouldFeel.png",
+        "bookDescription":"A little wolf named Echo feels completely out of place."
+    },
+    {
+        "bookId":"DemonHunters",
+        "bookName":"Demon Hunters",
+        "bookCover":"/bookCovers/holyGrailDemonHunters.png",
+        "bookDescription":"In a world of demons, life gets abit hectic. Demon hunters are tasked to eliminate demons"
+    },
+    {
+        "bookId":"TheBridge",
+        "bookName":"The Bridge",
+        "bookCover":"/bookCovers/theBridge.png",
+        "bookDescription":"The government is planning to demolish the bridge, which makes Xiao Chen furious."
+    },
+    {
+        "bookId":"RabbitInTheRedHat",
+        "bookName":"Rabbit in the red hat",
+        "bookCover":"/bookCovers/rabbitInTheRedHat.png",
+        "bookDescription":"The rabit is exploring his sense of identity and purpose of life."
+    },
+    {
+        "bookId":"TheTides",
+        "bookName":"The Tides",
+        "bookCover":"/bookCovers/theTides.png",
+        "bookDescription":"Learn more about tides- how it happens, when it happens and more. The sea is limitless."
+    },
+    {
+        "bookId":"WhereWasItHidden",
+        "bookName":"Where was it hidden?",
+        "bookCover":"/bookCovers/whereWasItHidden.png",
+        "bookDescription":"An important key was thrown into the forest by a pirate who mysteriously disappeared."
+    }               
+]
