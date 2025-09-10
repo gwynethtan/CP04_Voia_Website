@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import ScrollToTop from './components/ScrollToTop';
+import Layout from "./Layout"
+import Home from './pages/Home'
+import Auth from './pages/Auth'
+import Spelling from './pages/Spelling'
+import Boxes from './pages/Boxes.jsx'
+import Gallery from './pages/Gallery'
+import { useEffect, useState } from "react";
+import {HashRouter as Router,Routes,Route} from 'react-router-dom'
+import {onAuthStateChanged} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import {auth} from "../firebase.js"
+import {AuthProvider} from "../AuthContext.jsx"
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // Checks if user is logged in
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsLoggedIn(!!user);
+    });
+    return () => unsubscribe(); // Stop checking if auth state has changed
+  }, []);
+
+  // Pages that the website can navigate to
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <AuthProvider>
+      <Router>
+        <ScrollToTop />
+        <Routes>
+          <Route element={<Layout isLoggedIn={isLoggedIn}/>}>
+            <Route path="/" element={<Home isLoggedIn={isLoggedIn}/>}/>
+            <Route path="/Auth" element={<Auth/>}/>
+            <Route path="/Spelling" element={<Spelling/>}/>
+            <Route path="/Boxes" element={<Boxes/>}/>
+            <Route path="/Gallery" element={<Gallery/>}/>
+          </Route>
+        </Routes>
+      </Router>      
+    </AuthProvider>
+  );
 }
-
-export default App
